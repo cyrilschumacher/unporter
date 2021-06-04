@@ -1,4 +1,7 @@
-import { generateModelAsync } from "./unporter";
+import * as fs from "fs";
+import * as stream from "stream";
+
+import { generateModelAsync, renderAsync } from "./unporter";
 import { Command } from "commander";
 
 import debug from "debug";
@@ -32,5 +35,10 @@ export function parseOptions(argv: string[]) {
 
 export async function main() {
     const options = parseOptions(process.argv);
+
     const view = await generateModelAsync(options.branch);
+    const output = await renderAsync(view);
+
+    const out = options.out ? fs.createWriteStream(options.out) : (process.stdout as stream.Writable);
+    out.write(output);
 }

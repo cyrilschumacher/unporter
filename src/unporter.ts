@@ -1,4 +1,6 @@
 import * as fs from "fs";
+import * as path from "path";
+import * as mustache from "mustache";
 
 import { DefaultLogFields, SimpleGit } from "simple-git";
 
@@ -20,6 +22,17 @@ interface Model {
     added: Commit[];
     changed: Commit[];
     fixed: Commit[];
+}
+
+function readFileAsync(file: string) {
+    return new Promise<Buffer>((resolve, reject) =>
+        fs.readFile(file, (error, data) => (error ? reject(error) : resolve(data))),
+    );
+}
+
+async function readFileToUtf8StringAsync(file: string) {
+    const buffer = await readFileAsync(file);
+    return buffer.toString("utf8");
 }
 
 function createCommit(regExp: RegExp, log: DefaultLogFields, apply: (commit: Commit) => void) {
@@ -62,4 +75,11 @@ export async function generateModelAsync(parentBranchName: string, git = simpleG
     }
 
     return commitsInformation;
+}
+
+export async function renderAsync(model: Model) {
+    const file = path.resolve(__dirname, "..", "template.mustache");
+    const template = await readFileToUtf8StringAsync(file);
+
+    return mustache.render(template, model);
 }

@@ -1,0 +1,38 @@
+{{#added.length}}
+## Added
+
+{{#added}}
+* ({{hash.short}}) {{description}};
+{{#message}}
+
+{{.}}
+
+{{/message}}
+{{/added}}
+
+{{/added.length}}
+{{#changed.length}}
+## Changed
+
+{{#changed}}
+* ({{hash.short}}) {{description}};
+{{#message}}
+
+{{.}}
+
+{{/message}}
+{{/changed}}
+
+{{/changed.length}}
+{{#fixed.length}}
+## Fixed
+
+{{#fixed}}
+* ({{hash.short}}) {{description}};
+{{#message}}
+
+{{.}}
+
+{{/message}}
+{{/fixed}}
+{{/fixed.length}}
