@@ -1,8 +1,9 @@
 import * as fs from "fs";
 import * as stream from "stream";
 
-import { generateModelAsync, renderAsync } from "./unporter";
 import { Command } from "commander";
+import { onUncaughtException, onUnhandledRejection } from "./error";
+import { generateModelAsync, renderAsync } from "./unporter";
 
 import debug from "debug";
 
@@ -34,6 +35,8 @@ export function parseOptions(argv: string[]) {
 }
 
 export async function main() {
+    process.once("unhandledRejection", onUnhandledRejection).once("uncaughtException", onUncaughtException);
+
     const options = parseOptions(process.argv);
 
     const view = await generateModelAsync(options.branch);
