@@ -1,3 +1,4 @@
+import { generateModelAsync } from "./unporter";
 import { Command } from "commander";
 
 import debug from "debug";
@@ -31,4 +32,5 @@ export function parseOptions(argv: string[]) {
 
 export async function main() {
     const options = parseOptions(process.argv);
+    const view = await generateModelAsync(options.branch);
 }
