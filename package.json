@@ -1,0 +1,49 @@
+{
+  "name": "unporter",
+  "version": "0.0.1",
+  "keywords": [
+    "unporter",
+    "generator",
+    "release",
+    "git",
+    "conventional"
+  ],
+  "description": "Generate a Markdown file according to conventional Git commits.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "clean": "rimraf lib",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "prebuild": "tslint src/**/*.ts",
+    "prepublishOnly": "npm run build",
+    "start": "node lib/index.js",
+    "test": "mocha --require ts-node/register --recursive test/**/*",
+    "test:coverage": "nyc npm test"
+  },
+  "bin": {
+    "unporter": "./bin/unporter.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyrilschumacher/unporter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cyrilschumacher/unporter/issues"
+  },
+  "engines": {
+    "node": ">=12.0"
+  },
+  "homepage": "https://github.com/cyrilschumacher/unporter",
+  "author": "Cyril Schumacher",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^15.3.0",
+    "coveralls": "^3.1.0",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.2.4"
+  }
+}
