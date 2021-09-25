@@ -2,7 +2,7 @@
 
 [![MIT License][license-image]][license-url]
 [![npm version][npmjs-image]][npmjs-url]
-[![Build Status][travis-image]][travis-url]
+[![Node.js CI](https://github.com/cyrilschumacher/unporter/actions/workflows/node.js.yml/badge.svg)](https://github.com/cyrilschumacher/unporter/actions/workflows/node.js.yml)
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 
@@ -52,12 +52,8 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 [npmjs-image]: https://badge.fury.io/js/unporter.svg
 [npmjs-url]: https://www.npmjs.com/package/unporter
 
-[travis-image]: https://travis-ci.com/cyrilschumacher/unporter.svg
-[travis-url]: https://travis-ci.com/cyrilschumacher/unporter
-
 [snyk-image]: https://snyk.io/test/github/cyrilschumacher/unporter/badge.svg
 [snyk-url]: https://snyk.io/test/github/cyrilschumacher/unporter
 
 [coveralls-image]: https://coveralls.io/repos/github/cyrilschumacher/unporter/badge.svg?branch=develop
 [coveralls-url]: https://coveralls.io/github/cyrilschumacher/unporter?branch=develop
-
